@@ -19,8 +19,6 @@ public class Fruit extends JLabel {
         this.imgPath = imgPath;
         fruits = new ArrayList<Fruit>();
         fallenFruit = new ArrayList<Fruit>();
-       // fruitTimer.start();
-
 
         random = rand.nextInt(0, 1000 - this.getWidth());
         this.setBounds(random, 0, 55, 55);
@@ -33,17 +31,16 @@ public class Fruit extends JLabel {
 
     void Fall(){
 
-          this.setLocation(this.getX(), this.getY() + 15);
+          this.setLocation(this.getX(), this.getY() + 10);
 
     }
 
     void CheckForFallenFruit(Display display){
 
        for(Fruit f : fruits){
-           if(f.getY() > 600){
+           if(f.getY() > 700){
                display.remove(f);
                fallenFruit.add(f);
-
            }
 
        }
@@ -51,7 +48,7 @@ public class Fruit extends JLabel {
         display.repaint();
 
         for(int i = 0; i< fallenFruit.size(); i++){
-            if(fruits.get(i) == fallenFruit.get(i)){
+            if(fruits.get(i) == fallenFruit.get(i) && fruits.size() >= 1 && fallenFruit.size() >= 1){
                 fallenFruit.remove(i);
                 fruits.remove(i);
             }
@@ -59,19 +56,6 @@ public class Fruit extends JLabel {
 
     }
 
-    private Fruit getApple(){
-        return this;
-    }
-
-
-    Timer fruitTimer = new Timer(10, new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-              for(Fruit f : fruits){
-                 // f.Fall();
-              }
-        }
-    });
 
 
 }

@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,10 +32,17 @@ public class Window extends JFrame implements KeyListener {
         public void actionPerformed(ActionEvent e) {
             display.checkForCollision();
             display.apple.CheckForFallenFruit(display);
+            display.orange.CheckForFallenFruit(display);
             display.basket.setDirection(display.basket.direction);
+            display.basket.checkForBasketFruitCollision(display.apple, display);
+            display.basket.checkForBasketFruitCollision(display.orange, display);
 
-            for(Fruit f : display.apple.fruits){
-                f.Fall();
+            for(Fruit o : display.orange.fruits){
+                o.Fall();
+            }
+
+            for(Fruit a : display.apple.fruits){
+                a.Fall();
             }
         }
     });
