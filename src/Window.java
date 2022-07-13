@@ -18,11 +18,10 @@ public class Window extends JFrame implements KeyListener {
         display = new Display();
 
         this.add(display);
-        gameloop.start();
         this.addKeyListener(this);
 
         this.setVisible(true);
-
+        LaunchWaitTimer.start();
 
 
 
@@ -44,6 +43,17 @@ public class Window extends JFrame implements KeyListener {
             for(Fruit a : display.apple.fruits){
                 a.Fall();
             }
+        }
+    });
+
+    Timer LaunchWaitTimer = new Timer(5000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            display.ApplespawnTimer.start();
+            display.orangeSpawnTimer.start();
+            gameloop.start();
+            LaunchWaitTimer.stop();
+            display.remove(display.launchLabel);
         }
     });
 

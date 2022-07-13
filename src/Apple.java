@@ -13,11 +13,14 @@ public class Apple extends Fruit {
 
 
     void spawn(Display display){
+       int randomTime = rand.nextInt(600, 2300);
+        display.ApplespawnTimer.setDelay(randomTime);
         apple = new Apple("Assets\\apple.png");
         fruits.add(apple);
         random = apple.rand.nextInt(0, 1000 - apple.getWidth());
         apple.setBounds(random, 0 - this.getHeight(), 55, 55);
         display.add(apple);
+
     }
 
     public static Apple getApple(){

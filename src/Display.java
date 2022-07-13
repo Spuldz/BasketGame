@@ -2,42 +2,41 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
 public class Display extends JLabel {
     //constructor
     Basket basket;
     Apple apple;
     Orange orange;
-    Random rand;
     TaskLabel taskLabel;
-    int randomTime;
     ScoreLabel scoreLabel;
-    String img = "";
+    LaunchTimerLabel launchLabel;
+
 
     Display(){
         this.setSize(1000, 700);
         this.setBackground(new Color(52, 162, 235));
         this.setOpaque(true);
 
-        taskLabel = new TaskLabel(img);
+        taskLabel = new TaskLabel(null);
         basket = new Basket();
-        rand = new Random();
-        randomTime = rand.nextInt(1000, 2300);
         scoreLabel = new ScoreLabel(this.basket.score + "");
         scoreLabel.setBounds((this.getWidth() - scoreLabel.getWidth()) / 2, 0, scoreLabel.getWidth(), scoreLabel.getHeight());
         this.basket.setTaskLabelIcon(this);
 
+        launchLabel = new LaunchTimerLabel();
+        launchLabel.setBounds((this.getWidth() - launchLabel.getWidth()) / 2, (this.getHeight() - launchLabel.getHeight())/2, launchLabel.getWidth(), launchLabel.getHeight());
+
+
 
         apple = new Apple("Assets\\apple.png");
         orange = new Orange("Assets\\pineapple.png");
-        ApplespawnTimer.start();
-        pineappleSpawnTimer.start();
-
+        //LaunchWaitTimer.start();
 
         this.add(basket);
         this.add(scoreLabel);
         this.add(taskLabel);
+        this.add(launchLabel);
     }
 
 
@@ -61,19 +60,21 @@ public class Display extends JLabel {
     }
 
 
-    Timer ApplespawnTimer = new Timer(2000, new ActionListener() {
+    Timer ApplespawnTimer = new Timer(1000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             apple.spawn(getDisplay());
         }
     });
 
-    Timer pineappleSpawnTimer = new Timer(1500, new ActionListener() {
+    Timer orangeSpawnTimer = new Timer(1500, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             orange.spawn(getDisplay());
         }
     });
+
+
 
 
 
