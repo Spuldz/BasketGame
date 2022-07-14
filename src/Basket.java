@@ -23,7 +23,6 @@ public class Basket extends JLabel {
         score = 0;
         rand = new Random();
         random = rand.nextInt(1,3);
-        System.out.println(random);
 
 
         this.setBounds(450, 500, 140, 110);
@@ -50,32 +49,27 @@ public class Basket extends JLabel {
                 fruit.fallenFruit.add(f);
 
 
-                if(random == 1){
+                if(random == 1 && f.getIcon().toString() == "Assets\\orange.png"){
 
-                    if(f.getIcon().toString() == "Assets\\orange.png"){
+
                         score++;
                         display.scoreLabel.update(score);
                         return;
-                    }else if(f.getIcon().toString() != "Assets\\orange.png"){
-                        score--;
-                        display.scoreLabel.update(score);
-                        return;
-                    }
-
-                }
-
-            if(random == 2){
-
-                if(f.getIcon().toString() == "Assets\\apple.png"){
-                    score++;
-                    display.scoreLabel.update(score);
-                    return;
-                }else if(f.getIcon().toString() != "Assets\\apple.png"){
+                }else if(random == 1 && f.getIcon().toString() != "Assets\\orange.png"){
                     score--;
                     display.scoreLabel.update(score);
                     return;
                 }
 
+            if(random == 2 && f.getIcon().toString() == "Assets\\apple.png"){
+                    score++;
+                    display.scoreLabel.update(score);
+                    return;
+
+            }else if(random == 2 && f.getIcon().toString() != "Assets\\apple.png"){
+                score--;
+                display.scoreLabel.update(score);
+                return;
             }
         }
 

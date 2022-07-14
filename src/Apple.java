@@ -13,7 +13,7 @@ public class Apple extends Fruit {
 
 
     void spawn(Display display){
-       int randomTime = rand.nextInt(600, 2300);
+       int randomTime = rand.nextInt(600, 1600);
         display.ApplespawnTimer.setDelay(randomTime);
         apple = new Apple("Assets\\apple.png");
         fruits.add(apple);

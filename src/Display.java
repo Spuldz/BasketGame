@@ -11,6 +11,7 @@ public class Display extends JLabel {
     TaskLabel taskLabel;
     ScoreLabel scoreLabel;
     LaunchTimerLabel launchLabel;
+    TimeLabel timeLabel;
 
 
     Display(){
@@ -27,6 +28,9 @@ public class Display extends JLabel {
         launchLabel = new LaunchTimerLabel();
         launchLabel.setBounds((this.getWidth() - launchLabel.getWidth()) / 2, (this.getHeight() - launchLabel.getHeight())/2, launchLabel.getWidth(), launchLabel.getHeight());
 
+        timeLabel = new TimeLabel();
+        timeLabel.setBounds(this.getWidth() - timeLabel.getWidth(), 0, timeLabel.getWidth(), timeLabel.getHeight());
+
 
 
         apple = new Apple("Assets\\apple.png");
@@ -37,6 +41,7 @@ public class Display extends JLabel {
         this.add(scoreLabel);
         this.add(taskLabel);
         this.add(launchLabel);
+        this.add(timeLabel);
     }
 
 

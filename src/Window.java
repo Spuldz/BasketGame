@@ -43,19 +43,26 @@ public class Window extends JFrame implements KeyListener {
             for(Fruit a : display.apple.fruits){
                 a.Fall();
             }
+
+            if(display.timeLabel.seconds <  0){
+                gameloop.stop();
+            }
         }
     });
 
     Timer LaunchWaitTimer = new Timer(5000, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+            LaunchWaitTimer.stop();
             display.ApplespawnTimer.start();
             display.orangeSpawnTimer.start();
             gameloop.start();
-            LaunchWaitTimer.stop();
             display.remove(display.launchLabel);
+            display.timeLabel.timer.start();
         }
     });
+
+
 
 
 
