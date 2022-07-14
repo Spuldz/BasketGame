@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Display extends JLabel {
+public class Display extends JLabel{
     //constructor
     Basket basket;
     Apple apple;
@@ -33,8 +33,8 @@ public class Display extends JLabel {
 
 
 
-        apple = new Apple("Assets\\apple.png");
-        orange = new Orange("Assets\\pineapple.png");
+        apple = new Apple("Assets\\apple.png", "apple");
+        orange = new Orange("Assets\\pineapple.png", "orange");
         //LaunchWaitTimer.start();
 
         this.add(basket);
@@ -78,9 +78,6 @@ public class Display extends JLabel {
             orange.spawn(getDisplay());
         }
     });
-
-
-
 
 
 

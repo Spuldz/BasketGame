@@ -49,24 +49,22 @@ public class Basket extends JLabel {
                 fruit.fallenFruit.add(f);
 
 
-                if(random == 1 && f.getIcon().toString() == "Assets\\orange.png"){
-
-
+                if(random == 1 && f.type == "orange"){
                         score++;
                         display.scoreLabel.update(score);
                         return;
-                }else if(random == 1 && f.getIcon().toString() != "Assets\\orange.png"){
+                }else if(random == 1 && f.type != "orange"){
                     score--;
                     display.scoreLabel.update(score);
                     return;
                 }
 
-            if(random == 2 && f.getIcon().toString() == "Assets\\apple.png"){
+            if(random == 2 && f.type == "apple"){
                     score++;
                     display.scoreLabel.update(score);
                     return;
 
-            }else if(random == 2 && f.getIcon().toString() != "Assets\\apple.png"){
+            }else if(random == 2 && f.type != "apple"){
                 score--;
                 display.scoreLabel.update(score);
                 return;
@@ -82,6 +80,7 @@ public class Basket extends JLabel {
 }
 
     void setTaskLabelIcon(Display display){
+        random = rand.nextInt(1, 3);
         if(random == 2){
             display.taskLabel.setIcon(new ImageIcon("Assets\\appleIcon.png"));
         }else if(random == 1){

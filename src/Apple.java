@@ -5,8 +5,8 @@ import java.awt.event.ActionListener;
 
 public class Apple extends Fruit {
         static Apple apple;
-    Apple(String imgPath) {
-        super(imgPath);
+    Apple(String imgPath, String type) {
+        super(imgPath, type);
     }
 
 
@@ -15,7 +15,7 @@ public class Apple extends Fruit {
     void spawn(Display display){
        int randomTime = rand.nextInt(600, 1600);
         display.ApplespawnTimer.setDelay(randomTime);
-        apple = new Apple("Assets\\apple.png");
+        apple = new Apple("Assets\\apple.png", "apple");
         fruits.add(apple);
         random = apple.rand.nextInt(0, 1000 - apple.getWidth());
         apple.setBounds(random, 0 - this.getHeight(), 55, 55);

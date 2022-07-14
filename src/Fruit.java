@@ -8,6 +8,7 @@ import java.util.Random;
 
 public class Fruit extends JLabel {
     String imgPath;
+    String type;
     Random rand = new Random();
     int random = 0;
     ArrayList<Fruit> fruits;
@@ -15,8 +16,9 @@ public class Fruit extends JLabel {
     Iterator<Fruit> iter;
     int fruitsSpawned = 0;
     //constructor
-    Fruit(String imgPath){
+    Fruit(String imgPath, String type){
         this.imgPath = imgPath;
+        this.type = type;
         fruits = new ArrayList<Fruit>();
         fallenFruit = new ArrayList<Fruit>();
 
