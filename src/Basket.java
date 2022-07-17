@@ -1,9 +1,4 @@
-import org.w3c.dom.ls.LSOutput;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class Basket extends JLabel {
@@ -22,7 +17,7 @@ public class Basket extends JLabel {
 
         score = 0;
         rand = new Random();
-        random = rand.nextInt(1,3);
+
 
 
         this.setBounds(450, 500, 140, 110);
@@ -49,27 +44,11 @@ public class Basket extends JLabel {
                 fruit.fallenFruit.add(f);
 
 
-                if(random == 1 && f.type == "orange"){
-                        score++;
-                        display.scoreLabel.update(score);
-                        return;
-                }else if(random == 1 && f.type != "orange"){
-                    score--;
-                    display.scoreLabel.update(score);
-                    return;
-                }
+               setScore(display, 1, "apple", f);
+               setScore(display, 2, "orange", f);
+               setScore(display, 3, "pineapple", f);
 
-            if(random == 2 && f.type == "apple"){
-                    score++;
-                    display.scoreLabel.update(score);
-                    return;
-
-            }else if(random == 2 && f.type != "apple"){
-                score--;
-                display.scoreLabel.update(score);
-                return;
             }
-        }
 
 
     }
@@ -79,13 +58,18 @@ public class Basket extends JLabel {
         }
 }
 
-    void setTaskLabelIcon(Display display){
-        random = rand.nextInt(1, 3);
-        if(random == 2){
-            display.taskLabel.setIcon(new ImageIcon("Assets\\appleIcon.png"));
-        }else if(random == 1){
-            display.taskLabel.setIcon(new ImageIcon("Assets\\orangeIcon.png"));
-        }
+void setScore(Display display,int random ,String fruit, Fruit f){
+    if(display.taskLabel.random == random && f.type == fruit){
+        score++;
+        display.scoreLabel.update(score);
+        return;
+    }else if(display.taskLabel.random == random && f.type != fruit){
+        score--;
+        display.scoreLabel.update(score);
+        return;
     }
+}
+
+
 
 }

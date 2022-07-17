@@ -8,6 +8,7 @@ public class Display extends JLabel{
     Basket basket;
     Apple apple;
     Orange orange;
+    Pineapple pineapple;
     TaskLabel taskLabel;
     ScoreLabel scoreLabel;
     LaunchTimerLabel launchLabel;
@@ -23,7 +24,7 @@ public class Display extends JLabel{
         basket = new Basket();
         scoreLabel = new ScoreLabel(this.basket.score + "");
         scoreLabel.setBounds((this.getWidth() - scoreLabel.getWidth()) / 2, 0, scoreLabel.getWidth(), scoreLabel.getHeight());
-        this.basket.setTaskLabelIcon(this);
+        this.taskLabel.setTask(this);
 
         launchLabel = new LaunchTimerLabel();
         launchLabel.setBounds((this.getWidth() - launchLabel.getWidth()) / 2, (this.getHeight() - launchLabel.getHeight())/2, launchLabel.getWidth(), launchLabel.getHeight());
@@ -34,7 +35,8 @@ public class Display extends JLabel{
 
 
         apple = new Apple("Assets\\apple.png", "apple");
-        orange = new Orange("Assets\\pineapple.png", "orange");
+        orange = new Orange("Assets\\orange.png", "orange");
+        pineapple = new Pineapple("Assets\\pineapple.png", "pineapple");
         //LaunchWaitTimer.start();
 
         this.add(basket);
@@ -76,6 +78,13 @@ public class Display extends JLabel{
         @Override
         public void actionPerformed(ActionEvent e) {
             orange.spawn(getDisplay());
+        }
+    });
+
+    Timer pineappleSpawnTimer = new Timer(1300, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                 pineapple.spawn(getDisplay());
         }
     });
 

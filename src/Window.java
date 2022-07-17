@@ -44,9 +44,11 @@ public class Window extends JFrame implements KeyListener{
             display.checkForCollision();
             display.apple.CheckForFallenFruit(display);
             display.orange.CheckForFallenFruit(display);
+            display.pineapple.CheckForFallenFruit(display);
             display.basket.setDirection(display.basket.direction);
             display.basket.checkForBasketFruitCollision(display.apple, display);
             display.basket.checkForBasketFruitCollision(display.orange, display);
+            display.basket.checkForBasketFruitCollision(display.pineapple, display);
 
 
             for(Fruit o : display.orange.fruits){
@@ -55,6 +57,10 @@ public class Window extends JFrame implements KeyListener{
 
             for(Fruit a : display.apple.fruits){
                 a.Fall();
+            }
+
+            for(Fruit p : display.pineapple.fruits){
+                p.Fall();
             }
 
             if(display.timeLabel.seconds <  0){
@@ -75,19 +81,14 @@ public class Window extends JFrame implements KeyListener{
             LaunchWaitTimer.stop();
             display.ApplespawnTimer.start();
             display.orangeSpawnTimer.start();
+            display.pineappleSpawnTimer.start();
             gameloop.start();
             display.remove(display.launchLabel);
             display.timeLabel.timer.start();
         }
     });
 
-     void launchWaitTimerStart(){
-         LaunchWaitTimer.start();
-     }
 
-     void test(){
-         System.out.println("hello");
-     }
 
     public void restart() {
         display.remove(gameOverScreen);
@@ -102,24 +103,28 @@ public class Window extends JFrame implements KeyListener{
             display.remove(f);
         }
 
+        for(Fruit p : display.pineapple.fruits){
+            display.remove(p);
+        }
+
 
 
         display.ApplespawnTimer.stop();
         display.orangeSpawnTimer.stop();
+        display.pineappleSpawnTimer.stop();
         display.launchLabel.timer.start();
         LaunchWaitTimer.start();
         display.timeLabel.seconds = 59;
         display.basket.score = 0;
         display.scoreLabel.setText("0");
         display.timeLabel.setText("60");
-        display.basket.setTaskLabelIcon(display);
+        display.taskLabel.setTask(display);
         display.launchLabel.seconds = 4;
         display.launchLabel.setText("5");
         display.add(display.launchLabel);
         display.apple.fruits.clear();
         display.orange.fruits.clear();
-        display.apple.fallenFruit.clear();
-        display.orange.fallenFruit.clear();
+        display.pineapple.fruits.clear();
         display.getTopLevelAncestor().requestFocus();
 
         display.repaint();
@@ -150,12 +155,10 @@ public class Window extends JFrame implements KeyListener{
         switch(e.getKeyCode()){
             case 65:
                 display.basket.direction = "left";
-                System.out.println("l");
 
                 break;
             case 68:
                 display.basket.direction = "right";
-                System.out.println("r");
         }
     }
 
